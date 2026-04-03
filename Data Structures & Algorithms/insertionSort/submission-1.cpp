@@ -1,0 +1,26 @@
+// Definition for a Pair
+// class Pair {
+// public:
+//     int key;
+//     string value;
+//
+//     Pair(int key, string value) : key(key), value(value) {}
+// };
+class Solution {
+public:
+    vector<vector<Pair>> insertionSort(vector<Pair>& pairs) {
+        int n = pairs.size();
+        vector<vector<Pair>> ans;
+        for (int i = 0; i < n; i++) {
+            int j = i;
+            while (j > 0 && (pairs[j].key < pairs[j - 1].key)) {
+                Pair aux = pairs[j];
+                pairs[j] = pairs[j - 1];
+                pairs[j - 1] = aux;
+                j--;
+            }
+            ans.push_back(vector<Pair>(pairs.begin(), pairs.end()));
+        }
+        return ans;
+    }
+};
